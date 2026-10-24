@@ -9,6 +9,7 @@ import {
 
 export default function App() {
   const [progress, setProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const scrollBarRef = useRef(null);
   const archImgRef = useRef(null);
   const aboutTextRef = useRef(null);
@@ -390,7 +391,22 @@ export default function App() {
           <a href="#stack" data-h>stack</a>
           <a href="#ct" data-h>contact</a>
         </span>
+        <button
+          className="nav-toggle m"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle navigation"
+        >
+          {mobileMenuOpen ? 'close' : 'menu'}
+        </button>
       </nav>
+
+      {/* Mobile Navigation Drawer */}
+      <div className={`mobile-nav-menu m ${mobileMenuOpen ? 'open' : ''}`}>
+        <a href="#ab" onClick={() => setMobileMenuOpen(false)}>about</a>
+        <a href="#work" onClick={() => setMobileMenuOpen(false)}>work</a>
+        <a href="#stack" onClick={() => setMobileMenuOpen(false)}>stack</a>
+        <a href="#ct" onClick={() => setMobileMenuOpen(false)}>contact</a>
+      </div>
 
       {/* Hero Section */}
       <div className="w">
